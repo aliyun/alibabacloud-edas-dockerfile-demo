@@ -28,7 +28,7 @@ ARG TOMCAT_FULLNAME=apache-tomcat-7.0.91
 
 ADD ${TOMCAT_LOCATION} ${WORK_HOME}/
 
-# Set catalina location as 'edas-container'
+# Set catalina location and expose
 ENV CATALINA_HOME=${WORK_HOME}/${TOMCAT_FULLNAME}
 
 # Export bin path

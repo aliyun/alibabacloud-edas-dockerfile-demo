@@ -62,7 +62,10 @@ function startjar {
   fi
 
 
+  # Set /home/admin/app as the working dir.
   cd ${APPHOME}
+
+  # Startup the application
   ${JAVA_HOME}/bin/java -jar \
       ${JAVA_OPTS} \
       ${CATALINA_OPTS} \
