@@ -66,7 +66,7 @@ function startjar {
   cd ${APPHOME}
 
   # Startup the application
-  ${JAVA_HOME}/bin/java -jar \
+  exec ${JAVA_HOME}/bin/java -jar \
       ${JAVA_OPTS} \
       ${CATALINA_OPTS} \
       -Djava.security.egd=file:/dev/./urandom \
