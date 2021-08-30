@@ -19,11 +19,11 @@ function build_alitomcat {
 
   # set version as tomcatversion.replace(pandoraversion, '.', '')
   VERSION=${ALI_TOMCAT_VERSION}.${EDAS_CONTAINER_VERSION//./}
-  docker build -f alitomcat/Dockerfile ./ \
+  docker build --platform=linux/arm64 -f alitomcat/Dockerfile ./ \
     --build-arg TOMCAT_LOCATION=${TOMCAT_FILE} \
     --build-arg PANDORA_LOCATION=${PANDORA_FILE} \
-    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:${VERSION} \
-    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:latest
+    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:${VERSION}_arm \
+    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:latest_arm
   #docker push apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:${VERSION}
   #docker push apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:latest
 }
@@ -40,12 +40,12 @@ function build_tomcat {
   mkdir -p build/tmp
   wget ${TOMCAT_LOCATION} -O  ${TOMCAT_FILE}
 
-  docker build -f tomcat/Dockerfile ./ \
+  docker build --platform=linux/arm64 -f tomcat/Dockerfile ./ \
     --build-arg TOMCAT_LOCATION=${TOMCAT_FILE} \
     --build-arg TOMCAT_FULLNAME=apache-tomcat-${TOMCAT_VERSION} \
-    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:${TOMCAT_VERSION} \
-    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:latest \
-    -t apaas/edas:latest
+    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:${TOMCAT_VERSION}_arm \
+    -t apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:latest_arm \
+    -t apaas/edas:latest_arm
 
   #docker push apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:${TOMCAT_VERSION}
   #docker push apaas/edas-centos-openjdk8-${TOMCAT_LABEL}:latest
@@ -53,8 +53,8 @@ function build_tomcat {
 }
 
 
-build_alitomcat "3.5.9" "7.0.92" "alitomcat7"
-build_alitomcat "3.5.9" "8.5.37" "alitomcat8"
+#build_alitomcat "3.5.9" "7.0.92" "alitomcat7"
+#build_alitomcat "3.5.9" "8.5.37" "alitomcat8"
 
-build_tomcat "7.0.93" "tomcat7"
+#build_tomcat "7.0.93" "tomcat7"
 build_tomcat "8.5.42" "tomcat8"

@@ -1,4 +1,4 @@
-FROM centos:7
+FROM arm64v8/centos:7
 LABEL maintainer="Alibaba Cloud EDAS Team<edas-dev@list.alibaba-inc.com>"
 
 # Install building and running env tools
