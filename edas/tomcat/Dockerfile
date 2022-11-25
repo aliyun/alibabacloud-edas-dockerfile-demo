@@ -23,8 +23,8 @@ ENV TERM=xterm
 # http://edas-hz.oss-cn-hangzhou.aliyuncs.com/agent/prod/files/apache-tomcat-8.5.42.tar.gz
 # Exposing arguments
 ARG ENDPOINT=http://edas-hz.oss-cn-hangzhou.aliyuncs.com
-ARG TOMCAT_LOCATION=${ENDPOINT}/agent/prod/files/apache-tomcat-7.0.91.tar.gz
-ARG TOMCAT_FULLNAME=apache-tomcat-7.0.91
+ARG TOMCAT_LOCATION=${ENDPOINT}/agent/prod/files/apache-tomcat-8.5.42.tar.gz
+ARG TOMCAT_FULLNAME=apache-tomcat-8.5.42
 
 ADD ${TOMCAT_LOCATION} ${WORK_HOME}/
 
